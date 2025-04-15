@@ -1,17 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Enhancer Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="container">
     <header class="header">
       <h1>
-        <span class="icon">🎬</span> 
+        <span class="icon">🎬</span>
         Video Enhancer Dashboard
       </h1>
     </header>
@@ -26,7 +27,7 @@
             <div class="drop-text">Drop Video Here</div>
             <div class="upload-separator">or</div>
             <div class="click-text">Click to Upload</div>
-            <input type="file" id="fileInput" accept="video/*" style="display: none;">
+            <input type="file" id="fileInput" accept="video/*" style="display: none" />
           </div>
         </div>
         <div class="selected-file-info" id="fileInfo">
@@ -52,7 +53,7 @@
       <!-- Right Panel: Enhancement Settings -->
       <section class="settings-panel">
         <h2>Enhancement Settings</h2>
-        
+
         <!-- Upscaling Setting -->
         <div class="setting-group">
           <label for="upscaling">Upscaling</label>
@@ -68,7 +69,7 @@
         <div class="setting-group">
           <label for="sharpening">Sharpening Intensity</label>
           <div class="slider-container">
-            <input type="range" id="sharpening" min="0" max="100" value="50" class="slider">
+            <input type="range" id="sharpening" min="0" max="100" value="50" class="slider" />
             <div class="slider-value" id="sharpeningValue">50</div>
           </div>
         </div>
@@ -106,16 +107,36 @@
 
         <div class="setting-group">
           <label>Save Location</label>
-          <button id="saveLocationBtn" class="location-btn">Choose Location</button>
-          <div id="selectedLocation" class="selected-location">Default location</div>
+          <button id="saveLocationBtn" class="location-btn">
+            Choose Location
+          </button>
+          <div id="selectedLocation" class="selected-location">
+            Default location
+          </div>
         </div>
 
         <!-- Enhance Button -->
         <button id="enhanceBtn" class="enhance-btn">Enhance</button>
       </section>
+      </section>
     </main>
   </div>
+  <!-- History Button -->
+  <button id="historyBtn" class="history-btn" title="View Enhancement History">
+    <span class="history-icon">📜</span> History
+  </button>
 
+  <!-- History Modal -->
+  <div id="historyModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Enhanced Videos History</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+  </div>
   <script src="renderer.js"></script>
 </body>
+
 </html>
