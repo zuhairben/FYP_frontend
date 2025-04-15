@@ -1,4 +1,3 @@
-
 /* Root Variables */
 :root {
   --bg-dark: #121317;
@@ -152,6 +151,7 @@ section h2 {
   background-color: var(--bg-element);
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
 }
 
 .preview-label {
@@ -166,6 +166,37 @@ section h2 {
   height: 100%;
   background-color: var(--bg-dark);
   object-fit: contain;
+}
+
+/* After preview box specific styles */
+.preview-box:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-box:nth-child(2) .preview-video {
+  display: none;
+}
+
+.preview-box:nth-child(2) .preview-video[src] {
+  display: block;
+}
+
+.preview-box:nth-child(2)::before {
+  content: "Enhanced video will appear here";
+  color: var(--text-tertiary);
+  position: absolute;
+  text-align: center;
+  padding: 20px;
+}
+
+.preview-box:nth-child(2) .preview-video[src] ~ .preview-label {
+  display: block;
+}
+
+.preview-box:nth-child(2) .preview-label {
+  display: none;
 }
 
 /* Settings Panel */

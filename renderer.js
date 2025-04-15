@@ -1,4 +1,3 @@
-
 // Renderer process file for the Video Enhancer Dashboard
 const { ipcRenderer } = require('electron');
 const path = require('path');
@@ -64,6 +63,10 @@ function initApp() {
   enhanceBtn.disabled = true;
   enhanceBtn.style.opacity = 0.5;
   enhanceBtn.style.cursor = 'not-allowed';
+  
+  // Hide the enhanced video initially
+  enhancedVideo.style.display = 'none';
+  document.querySelector('.preview-box:nth-child(2) .preview-label').style.display = 'none';
 }
 
 // File handling functions
@@ -109,9 +112,10 @@ function processVideoFile(file) {
   const videoURL = URL.createObjectURL(file);
   originalVideo.src = videoURL;
   
-  // In a real app, we might do some initial processing here
-  // For the demo, we'll just show the same video in both preview boxes
-  enhancedVideo.src = videoURL;
+  // Clear any previous enhanced video
+  enhancedVideo.src = '';
+  enhancedVideo.style.display = 'none';
+  document.querySelector('.preview-box:nth-child(2) .preview-label').style.display = 'none';
   
   // Enable enhance button
   enhanceBtn.disabled = false;
@@ -154,10 +158,6 @@ function enhanceVideo() {
     return;
   }
   
-  // In a real app, this is where we would send the video and settings
-  // to a backend process for enhancement.
-  // For the demo, we'll just simulate processing with a timeout.
-
   enhanceBtn.disabled = true;
   enhanceBtn.textContent = 'Processing...';
   
@@ -167,8 +167,12 @@ function enhanceVideo() {
 
   // Simulate processing delay
   setTimeout(() => {
-    // In a real app, we would update the enhanced video preview
-    // and enable downloading the result.
+    // Show the enhanced video (in a real app, this would be the actual enhanced video)
+    const videoURL = URL.createObjectURL(currentFile); // In real app, use the enhanced video
+    enhancedVideo.src = videoURL;
+    enhancedVideo.style.display = 'block';
+    document.querySelector('.preview-box:nth-child(2) .preview-label').style.display = 'block';
+    
     enhanceBtn.textContent = 'Enhance';
     enhanceBtn.disabled = false;
     
