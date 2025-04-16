@@ -1,3 +1,8 @@
+// const { contextBridge, ipcRenderer } = require('electron');
 
-// Preload script - can be used for secure context bridges in a production app
-// Empty for now since we're using nodeIntegration: true for simplicity
+// contextBridge.exposeInMainWorld('electronAPI', {
+//   chooseVideoFile: () => ipcRenderer.invoke('open-video-dialog'),
+//   chooseSaveLocation: () => ipcRenderer.invoke('open-save-dialog'),
+//   startEnhancement: (data) => ipcRenderer.send('enhance-video', data),
+//   onEnhancementProgress: (callback) => ipcRenderer.on('enhancement-progress', callback),
+// });
